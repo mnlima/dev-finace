@@ -1,7 +1,7 @@
 /* global */
 :root {
   --dark-blue: #363f5f;
-  --green: #49AA26;
+  --green: #49aa26;
   --light-green: #61d039;
   --red: #e92929;
   --light-red: #e96565;
@@ -62,7 +62,7 @@ button {
   width: 100%;
   height: 50px;
   border: none;
-  
+
   color: white;
   background-color: var(--green);
 
@@ -88,7 +88,7 @@ button:hover {
   width: auto;
   height: 30px;
   border: none;
-  
+
   color: white;
   background-color: var(--light-red);
 
@@ -105,7 +105,7 @@ button:hover {
   color: var(--red);
   border: 2px var(--red) solid;
   border-radius: 0.25rem;
-  
+
   height: 50px;
 
   display: flex;
@@ -161,7 +161,7 @@ header {
 }
 
 .card.total {
-  background:var(--green);
+  background: var(--green);
   color: #fff;
 }
 
@@ -276,7 +276,7 @@ input:not([type="checkbox"]) {
   margin-top: 1rem;
 }
 
-.input-group small {
+small {
   opacity: 0.4;
 }
 

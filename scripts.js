@@ -155,6 +155,19 @@ const DOM = {
 
   crearTransactions() {
     DOM.transactionContainer.innerHTML = '';
+  },
+
+  hideElements() {
+    let display;
+    if (Transaction.all.length == 0) {
+      display = 'none';
+    } else {
+      display = 'block';
+    }
+
+    document.querySelectorAll('.visible').forEach(element => {
+      element.style.display = display;
+    });
   }
 }
 
@@ -179,7 +192,8 @@ const PDF = {
       hour: 'numeric',
       minute: 'numeric',
     };
-    const date = new Date().toLocaleDateString( 'pt-br', option);
+    const date = new Date().toLocaleDateString('pt-br', option);
+    
     Transaction.all.forEach((transaction) => {
       data.push({
         'Data': transaction.date,
@@ -222,9 +236,9 @@ const PDF = {
 
     if (download) {
       this.doc.save('dev.finance.pdf');
-      Modal.toggle('.pdf');
+      Modal.toggle('.generate-PDF');
     } else {
-      window.open(this.doc.output('bloburl', 'filename.pdf'));
+      window.open(this.doc.output('bloburl', 'dev.finance.pdf'));
     }
 
     if (resetTable) {
@@ -310,7 +324,7 @@ const Form = {
       const transaction = Form.formatValues();
       Transaction.add(transaction);
       Form.clearFields();
-      Modal.toggle();
+      Modal.toggle('.new-transaction');
     } catch (error) {
       alert(error.message);
     }
@@ -327,12 +341,7 @@ const App = {
 
     Storage.set(Transaction.all);
 
-    if (Transaction.all.length == 0) {
-      document.querySelector('.pdf').style.display = 'none';
-    } else {
-      document.querySelector('.pdf').style.display = 'flex';
-
-    }
+    DOM.hideElements();
   },
 
   reload() {
